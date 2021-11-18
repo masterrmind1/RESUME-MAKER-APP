@@ -1,0 +1,39 @@
+.viewer-container{
+    padding-top: 60px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 50px;
+    padding-right: 50px;
+    min-width: 882px;
+    max-width: 882px;
+    min-height: 1246px;
+    max-height: 1246px;
+    background-color: white;
+    .header{
+        line-height: 1;
+        border-bottom: 1px solid rgb(229, 228, 234);
+        padding-bottom: 20px;
+        .details{
+            padding-right: 20px;
+            border-right: 1px solid rgb(229, 228, 234);
+            .name{
+                font-size: 30px;
+                padding-bottom: 10px;
+                padding-left: 40px;
+                // border-bottom: 1px solid rgb(229, 228, 234);
+            }
+            .address-container{
+                .addres-container-row{
+                    padding-left: 40px;
+                }
+            }
+            
+        }
+        .profile{
+            padding-left: 20px;
+            .profile-text{
+            
+            }
+        }
+    }
+}

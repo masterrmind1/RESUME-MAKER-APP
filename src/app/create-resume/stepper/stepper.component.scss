@@ -1,0 +1,50 @@
+.mat-stepper-horizontal {
+    margin-top: 8px;
+  }
+  
+  .mat-form-field {
+    margin-top: 16px;
+  }
+
+  .field-row{
+    flex-direction: row;
+    box-sizing: border-box;
+    display: flex;
+    place-content: flex-start space-between;
+    align-items: flex-start;
+  }
+.stepper-container{
+  background-color: rgba(0,0,0,.04);
+  margin-top: 0px !important;
+}
+.stepper-heading{
+  background-color: rgba(0,0,0,.04);
+  font-size: 20px;
+  padding-top: 10px;
+}
+
+.text-field{
+  ::ng-deep{
+    .mat-form-field-wrapper{
+      ::ng-deep{
+        .mat-form-field-flex{
+          background-color: white;
+        }
+      }
+    }
+  }
+}
+
+.stepper-button-container{
+  padding-top: 10px;
+  flex-direction: row;
+  box-sizing: border-box;
+  display: flex;
+  place-content: center flex-end;
+  align-items: flex-start;
+  button{
+    margin-right: 10px;
+  }
+  
+}
+
