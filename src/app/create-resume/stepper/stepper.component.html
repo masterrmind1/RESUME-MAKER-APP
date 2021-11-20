@@ -1,0 +1,260 @@
+<div class="stepper-heading" fxLayout="row" fxLayoutAlign="center start ">
+    {{getStepperValue()}}
+</div>
+<form [formGroup]="allFormGroup">
+    <mat-horizontal-stepper class="stepper-container" [selectedIndex]="index" labelPosition="bottom" linear #stepper orientation="vertical">
+        <mat-step formGroupName="contactFromGroup" [editable]="true">
+            <!-- <form [formGroup]="contactFromGroup"> -->
+            <ng-template matStepLabel></ng-template>
+            <div class="field-row">
+                <mat-form-field class="text-field" appearance="fill" fxFlex="100%">
+                    <mat-label>First Name</mat-label>
+                    <input matInput #firstName formControlName="firstName" maxlength="15" placeholder="Sundar" required>
+                    <mat-hint align="end">{{firstName.value.length}} / 15</mat-hint>
+                    <mat-error *ngIf="allFormGroup.get('contactFromGroup').get('firstName').hasError('required')">
+                        First Name is required
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="field-row">
+                <mat-form-field class="text-field" appearance="fill" fxFlex="100%">
+                    <mat-label>Last Name</mat-label>
+                    <input matInput #lastName formControlName="lastName" maxlength="15" placeholder="pichai">
+                    <mat-hint align="end">{{lastName.value.length}} / 15</mat-hint>
+                </mat-form-field>
+            </div>
+            <div class="field-row">
+                <mat-form-field class="text-field" appearance="fill" fxFlex="100%">
+                    <mat-label>Address</mat-label>
+                    <input matInput #address formControlName="address" maxlength="30" placeholder="" required>
+                    <mat-hint align="end">{{address.value.length}} / 30</mat-hint>
+                    <mat-error *ngIf="allFormGroup.get('contactFromGroup').get('address').hasError('required')">
+                        Address is required
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="field-row">
+                <mat-form-field class="text-field" appearance="fill" fxFlex="100%">
+                    <mat-label>Postal Code</mat-label>
+                    <input matInput #zip formControlName="zip" minlength='6' maxlength="6" placeholder="450013" required>
+                    <mat-hint align="end">{{zip.value.length}} / 6</mat-hint>
+                    <mat-error *ngIf="allFormGroup.get('contactFromGroup').get('zip').hasError('minlength') && !allFormGroup.get('contactFromGroup').get('zip').hasError('required')">
+                        Please enter a valid Postal Code
+                    </mat-error>
+                    <mat-error class="error-text" *ngIf="allFormGroup.get('contactFromGroup').get('zip').hasError('pattern')">
+                        Postal Code should be numaric
+                    </mat-error>
+                    <mat-error *ngIf="allFormGroup.get('contactFromGroup').get('zip').hasError('required')">
+                        Postal Code is required
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="field-row">
+                <mat-form-field class="text-field" appearance="fill" fxFlex="100%">
+                    <mat-label>Mobile Number</mat-label>
+                    <input matInput #number formControlName="number" minlength='10' maxlength="10" placeholder="" required>
+                    <mat-hint align="end">{{number.value.length}} / 10</mat-hint>
+                    <mat-error *ngIf="allFormGroup.get('contactFromGroup').get('number').hasError('minlength') && !allFormGroup.get('contactFromGroup').get('number').hasError('required')">
+                        Please enter a valid Mobile Number
+                    </mat-error>
+                    <mat-error class="error-text" *ngIf="allFormGroup.get('contactFromGroup').get('number').hasError('pattern')">
+                        Mobile Number should be numaric
+                    </mat-error>
+                    <mat-error *ngIf="allFormGroup.get('contactFromGroup').get('number').hasError('required')">
+                        Mobile Number is required
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="field-row">
+                <mat-form-field class="text-field" appearance="fill" fxFlex="100%">
+                    <mat-label>Email</mat-label>
+                    <input matInput #email formControlName="email" maxlength="20" placeholder="abc@gmail.com" required>
+                    <mat-hint align="end">{{email.value.length}} / 20</mat-hint>
+                    <mat-error *ngIf="allFormGroup.get('contactFromGroup').get('email').hasError('email') && !allFormGroup.get('contactFromGroup').get('email').hasError('required')">
+                        Please enter a valid email address
+                    </mat-error>
+                    <mat-error *ngIf="allFormGroup.get('contactFromGroup').get('email').hasError('required')">
+                        Email is required
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="stepper-button-container">
+                <button (click)="goToNext()" mat-raised-button color="primary" matStepperNext>Next</button>
+            </div>
+            <!-- </form> -->
+        </mat-step>
+        <mat-step>
+            <ng-template matStepLabel></ng-template>
+            <mat-form-field>
+                <mat-label>Add profile</mat-label>
+                <textarea matInput placeholder=""></textarea>
+            </mat-form-field>
+            <div class="stepper-button-container">
+                <button mat-raised-button (click)="goBack()" color="primary" matStepperPrevious>Back</button>
+                <button mat-raised-button (click)="goToNext()" color="primary" matStepperNext>Next</button>
+            </div>
+        </mat-step>
+        <mat-step>
+            <ng-template matStepLabel></ng-template>
+            <div formGroupName="education">
+                Bechelors Degree
+                <div formGroupName="bechlors">
+                    <div>
+                        <mat-form-field class="text-field" appearance="fill" fxFlex="100%">
+                            <mat-label>University Name</mat-label>
+                            <input matInput #univ formControlName="univ" maxlength="10" placeholder="" required>
+                            <mat-hint align="end">{{univ.value.length}} / 15</mat-hint>
+                            <mat-error *ngIf="allFormGroup.get('education').get('bechlors').get('univ').hasError('required')">
+                                University Name is required
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div>
+                        <mat-form-field class="text-field" appearance="fill" fxFlex="100%">
+                            <mat-label>Degree Name</mat-label>
+                            <input matInput #degree formControlName="degreeName" maxlength="15" placeholder="" required>
+                            <mat-hint align="end">{{degree.value.length}} / 15</mat-hint>
+                            <mat-error *ngIf="allFormGroup.get('education').get('bechlors').get('degreeName').hasError('required')">
+                                Degree Name is required
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div fxLayout="row" fxLayoutAlign="space-between start">
+                        <mat-form-field class="text-field" appearance="fill" fxFlex="45%">
+                            <mat-label>Starting Year</mat-label>
+                            <input matInput #start formControlName="startingYear" maxlength="15" placeholder="" required>
+                            <mat-hint align="end">{{start.value.length}} / 15</mat-hint>
+                            <mat-error *ngIf="allFormGroup.get('education').get('bechlors').get('startingYear').hasError('required')">
+                                Starting Year is required
+                            </mat-error>
+                        </mat-form-field>
+                        <mat-form-field class="text-field" appearance="fill" fxFlex="45%">
+                            <mat-label>Completing year</mat-label>
+                            <input matInput #end formControlName="passingYear" maxlength="15" placeholder="" required>
+                            <mat-hint align="end">{{end.value.length}} / 15</mat-hint>
+                            <mat-error *ngIf="allFormGroup.get('education').get('bechlors').get('univ').hasError('required')">
+                                Completing year is required
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div>
+                    Masters Degree
+                    <div formGroupName="masters">
+                        <div>
+                            <mat-form-field class="text-field" appearance="fill" fxFlex="100%">
+                                <mat-label>University Name</mat-label>
+                                <input matInput #univ formControlName="univ" maxlength="10" placeholder="" required>
+                                <mat-hint align="end">{{univ.value.length}} / 15</mat-hint>
+                                <mat-error *ngIf="allFormGroup.get('education').get('bechlors').get('univ').hasError('required')">
+                                    University Name is required
+                                </mat-error>
+                            </mat-form-field>
+                        </div>
+                        <div>
+                            <mat-form-field class="text-field" appearance="fill" fxFlex="100%">
+                                <mat-label>Degree Name</mat-label>
+                                <input matInput #degree formControlName="degreeName" maxlength="15" placeholder="" required>
+                                <mat-hint align="end">{{degree.value.length}} / 15</mat-hint>
+                                <mat-error *ngIf="allFormGroup.get('education').get('bechlors').get('degreeName').hasError('required')">
+                                    Degree Name is required
+                                </mat-error>
+                            </mat-form-field>
+                        </div>
+                        <div fxLayout="row" fxLayoutAlign="space-between start">
+                            <mat-form-field class="text-field" appearance="fill" fxFlex="45%">
+                                <mat-label>Starting Year</mat-label>
+                                <input matInput #start formControlName="startingYear" maxlength="15" placeholder="" required>
+                                <mat-hint align="end">{{start.value.length}} / 15</mat-hint>
+                                <mat-error *ngIf="allFormGroup.get('education').get('bechlors').get('startingYear').hasError('required')">
+                                    Starting Year is required
+                                </mat-error>
+                            </mat-form-field>
+                            <mat-form-field class="text-field" appearance="fill" fxFlex="45%">
+                                <mat-label>Completing year</mat-label>
+                                <input matInput #end formControlName="passingYear" maxlength="15" placeholder="" required>
+                                <mat-hint align="end">{{end.value.length}} / 15</mat-hint>
+                                <mat-error *ngIf="allFormGroup.get('education').get('bechlors').get('univ').hasError('required')">
+                                    Completing year is required
+                                </mat-error>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="stepper-button-container">
+                <button mat-raised-button (click)="goBack()" color="primary" matStepperPrevious>Back</button>
+                <button mat-raised-button (click)="goToNext()" color="primary" matStepperNext>Next</button>
+            </div>
+        </mat-step>
+        <mat-step formGroupName="employement" [editable]="true">
+            <ng-template matStepLabel></ng-template>
+
+            <div>
+                <button mat-raised-button (click)="addEmplyment()" color="primary" matStepperPrevious>ADD Employment</button>
+            </div>
+
+            <mat-accordion class="example-headers-align" *ngIf="getEmploymentData(0)">
+                <mat-expansion-panel [expanded]="accordianStep === 0" (opened)="setStep(0)" *ngIf="getEmploymentData(1)" hideToggle>
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            Personal data
+                        </mat-panel-title>
+                        <mat-panel-description>
+                            Type your name and age
+                            <mat-icon>account_circle</mat-icon>
+                        </mat-panel-description>
+                    </mat-expansion-panel-header>
+
+                    <mat-form-field>
+                        <mat-label>First name</mat-label>
+                        <input matInput>
+                    </mat-form-field>
+
+
+                    <mat-action-row>
+                        <button mat-button color="primary" (click)="nextStep()">Next</button>
+                    </mat-action-row>
+                </mat-expansion-panel>
+                <mat-expansion-panel [expanded]="accordianStep === 0" (opened)="setStep(0)" *ngIf="getEmploymentData(2)" hideToggle>
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            Personal data
+                        </mat-panel-title>
+                        <mat-panel-description>
+                            Type your name and age
+                            <mat-icon>account_circle</mat-icon>
+                        </mat-panel-description>
+                    </mat-expansion-panel-header>
+
+
+                    <mat-action-row>
+                        <button mat-button color="primary" (click)="nextStep()">Next</button>
+                    </mat-action-row>
+                </mat-expansion-panel>
+            </mat-accordion>
+
+
+            <div class="stepper-button-container">
+                <button mat-raised-button (click)="goBack()" color="primary" matStepperPrevious>Back</button>
+                <button mat-raised-button (click)="goToNext()" color="primary" matStepperNext>Next</button>
+            </div>
+        </mat-step>
+        <mat-step>
+            <ng-template matStepLabel></ng-template>
+
+            <div class="stepper-button-container">
+                <button mat-raised-button (click)="goBack()" color="primary" matStepperPrevious>Back</button>
+                <button mat-raised-button (click)="goToNext()" color="primary" matStepperNext>Next</button>
+            </div>
+        </mat-step>
+        <mat-step>
+            <ng-template matStepLabel></ng-template>
+            <p>You are now done.</p>
+            <div class="stepper-button-container">
+                <button mat-raised-button (click)="goBack()" color="primary" matStepperPrevious>Back</button>
+                <button mat-raised-button (click)="goToNext()" color="primary" matStepperNext>Next</button>
+            </div>
+        </mat-step>
+    </mat-horizontal-stepper>
+</form>
