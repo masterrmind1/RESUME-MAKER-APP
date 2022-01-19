@@ -3,6 +3,8 @@
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.13.
 # [Live Link](https://resumebuilder-2d96d.web.app/)
 
+# Project's aim
+  Build a attractive and organized resume with very less efforts.
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
