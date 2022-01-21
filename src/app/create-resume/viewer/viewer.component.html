@@ -1,0 +1,44 @@
+<div class="viewer-container" id="pdfElement" #pdfElement>
+    <div class="header" *ngIf="data" fxLayout="row" fxLayoutAlign="space-between start">
+        <div class="details" fxFlex="45%">
+            <div class="name" fxLayout="row" fxLayoutAlign="start center">
+                <div>{{data.contactFromGroup.firstName | concat: data.contactFromGroup.lastName: false}}</div>
+            </div>
+            <div class="address-container" fxLayout="column" fxLayoutGap="5px">
+                <div class="addres-container-row" fxLayout="row" fxLayoutAlign="start center">
+                    <div fxFlex='40%' fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="5px">
+                        <div>
+                            <mat-icon>call</mat-icon>
+                        </div>
+                        <div>{{data.contactFromGroup.number}}</div>
+                    </div>
+                    <div fxFlex='60%' fxLayout="row wrap " fxLayoutAlign="start center" fxLayoutGap="5px">
+                        <div>
+                            <mat-icon>mail</mat-icon>
+                        </div>
+                        <div fxLayout="row wrap ">{{data.contactFromGroup.email}}</div>
+
+                    </div>
+                </div>
+                <div class="addres-container-row" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="5px">
+                    <div>
+                        <mat-icon>room</mat-icon>
+                    </div>
+                    <div>{{data.contactFromGroup.address | concat: data.contactFromGroup.zip: true}}</div>
+                </div>
+
+            </div>
+        </div>
+        <div class="profile" fxFlex="55%">
+            <div class="profile-text">
+                Profile
+            </div>
+            <div>
+
+            </div>
+        </div>
+    </div>
+    <div class="content">
+
+    </div>
+</div>
